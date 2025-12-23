@@ -92,7 +92,7 @@ const Faq = () => {
           {/* Header */}
           <div className="text-center mb-12" data-aos="fade-up">
             <span className="inline-block text-secondary font-medium text-sm tracking-wider uppercase mb-4">
-              Bantuan
+              FAQ
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               Pertanyaan <span className="text-primary">Umum</span>

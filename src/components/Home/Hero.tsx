@@ -21,12 +21,6 @@ const Hero = () => {
             data-aos="fade-right"
             data-aos-duration="800"
           >
-            {/* Badge */}
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/10 text-secondary font-medium text-sm tracking-wide rounded-md mb-6">
-              <span className="w-2 h-2 bg-secondary rounded-full animate-pulse"></span>
-              Warisan Budaya Indonesia
-            </span>
-
             {/* Headline */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
               Keanggunan dalam{" "}
