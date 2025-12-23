@@ -2,7 +2,7 @@
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Navbar";
-import { NextUIProvider } from "@nextui-org/react";
+import { HeroUIProvider } from "@heroui/react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import React, { useEffect } from "react";
@@ -17,7 +17,7 @@ const RootClient = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <NextUIProvider>
+    <HeroUIProvider>
       <div className="flex flex-col min-h-screen">
         <Header />
         {/* Main content wrapper with proper spacing for fixed navbar */}
@@ -26,7 +26,7 @@ const RootClient = ({ children }: { children: React.ReactNode }) => {
         </main>
         <Footer />
       </div>
-    </NextUIProvider>
+    </HeroUIProvider>
   );
 };
 

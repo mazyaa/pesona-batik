@@ -9,7 +9,7 @@ import {
   NavbarMenu,
   NavbarContent,
   NavbarItem,
-} from "@nextui-org/react";
+} from "@heroui/react";
 
 // Updated icons - more suitable for fashion/cultural platform
 import { HiOutlineHome, HiOutlineUserGroup, HiOutlineChatBubbleLeftRight } from "react-icons/hi2";

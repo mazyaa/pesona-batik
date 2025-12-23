@@ -8,7 +8,7 @@ import {
   Button,
   useDisclosure,
   Input,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -28,13 +28,12 @@ export default function OrderForm({
   totalPrices,
 }: OrderFormProps) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const [quantity, setQuantity] = useState(1); // State untuk jumlah pesanan
-  const [totalPrice, setTotalPrice] = useState(totalPrices); // State untuk harga total
+  const [quantity, setQuantity] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(totalPrices);
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
 
-  // Fungsi untuk mengupdate jumlah dan menghitung total harga
   const handleQuantityChange = (value: number) => {
     if (value < 1) return;
     setQuantity(value);
@@ -61,7 +60,7 @@ export default function OrderForm({
   ];
 
   const generateWhatsAppLink = () => {
-    const orderId = "ORD" + Math.floor(Math.random() * 1000000); // random oreder ID
+    const orderId = "ORD" + Math.floor(Math.random() * 1000000);
     const productName = encodeURIComponent(product.name);
     const productPrice = `Rp${totalPrice.toLocaleString("id-ID")}`;
     const message = `
@@ -121,7 +120,6 @@ export default function OrderForm({
                     size="sm"
                   />
                 ))}
-                {/* Input jumlah pesanan */}
                 <Input
                   type="number"
                   min={1}
@@ -135,7 +133,6 @@ export default function OrderForm({
                   variant="bordered"
                 />
 
-                {/* Keterangan Pesanan */}
                 <h3 className="text-lg font-semibold">Keterangan Pesanan:</h3>
                 <ul className="list-disc flex flex-row gap-9 pl-5 items-center space-y-1">
                   <div>
@@ -157,7 +154,6 @@ export default function OrderForm({
                   </div>
                 </ul>
 
-                {/* Harga Total */}
                 <h3 className="text-lg font-semibold">
                   Harga Total: Rp{" "}
                   {totalPrice ? totalPrice.toLocaleString("id-ID") : 0}
