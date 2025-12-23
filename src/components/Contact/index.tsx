@@ -1,80 +1,140 @@
-import React from "react";
-import { FaMapLocationDot } from "react-icons/fa6";
+"use client";
+
+import { FaMapLocationDot, FaWhatsapp } from "react-icons/fa6";
 import { IoMdCall, IoMdMail } from "react-icons/io";
+import { FaClock } from "react-icons/fa";
 import GoogleMapsEmbed from "./Maps";
 
-const Contact = () => {
+const CONTACT_INFO = [
+  {
+    icon: FaMapLocationDot,
+    title: "Alamat",
+    content:
+      "Ruko Kedoya Elok Plaza No.7-9 Blok DE, Jl. Panjang, Jakarta Barat 11520",
+  },
+  {
+    icon: IoMdCall,
+    title: "Telepon",
+    content: "+62 878 8579 3483",
+    href: "tel:+6287885793483",
+  },
+  {
+    icon: IoMdMail,
+    title: "Email",
+    content: "hello@pesonabatik.id",
+    href: "mailto:hello@pesonabatik.id",
+  },
+  {
+    icon: FaClock,
+    title: "Jam Operasional",
+    content: "Senin - Sabtu: 09:00 - 18:00",
+  },
+];
+
+export default function Contact() {
   return (
     <section
-      className="container flex flex-col items-center justify-center py-10 md:px-16"
       id="kontak"
+      className="py-16 md:py-20 lg:py-28 bg-gradient-to-b from-white to-primary-50/30"
     >
-      <div
-        className="flex flex-col mb-7 md:flex-row gap-6 md:w-[70%] mx-auto"
-        data-aos="fade-up"
-      >
-        <h4 className="text-2xl font-bold sm:text-3xl md:text-4xl">
-          Informasi & Konsultasi <span className="text-baseApp">Gratis</span>{" "}
-          Sekarang!
-        </h4>
-        <p className="mb-3">
-          Butuh bantuan dan informasi yang lebih cepat? Jangan ragu untuk
-          menghubungi kami.
-        </p>
-      </div>
-      <div className="container flex flex-col items-center gap-10 md:gap-0 md:flex-row">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <div
-          className="flex flex-col gap-4"
-          data-aos="fade-right"
-          data-aos-duration="1000"
+          className="text-center max-w-2xl mx-auto mb-14"
+          data-aos="fade-up"
         >
-          <article
-            className="py-2 bg-blue-100 px-3 rounded-lg"
-            data-aos="zoom-in"
-            data-aos-duration="1000"
-          >
-            <div className="flex flex-row items-center gap-6 card-body">
-              <FaMapLocationDot className="text-4xl w-[30px] md:w-[40px] h-[30px] md:h-[40px] text-baseApp" />
-              <div>
-                <h4 className="text-lg font-bold">Alamat</h4>
-                <p>
-                  No.7-9 Blok DE 6-7-8, Ruko Kedoya Elok Plaza, Jl. Panjang,
-                  West Jakarta City, Jakarta 11520
-                </p>
-              </div>
-            </div>
-          </article>
-          <article
-            className="py-2 bg-blue-100 px-3 rounded-lg"
-            data-aos="zoom-in"
-            data-aos-duration="1200"
-          >
-            <div className="flex flex-row items-center gap-6 card-body">
-              <IoMdCall className="text-4xl w-[30px] md:w-[40px] h-[30px] md:h-[40px] text-baseApp" />
-              <div>
-                <h4 className="text-lg font-bold">Nomor Telepon</h4>
-                <p>+62 878 8579 3483</p>
-              </div>
-            </div>
-          </article>
-          <article
-            className="py-2 bg-blue-100 px-3 rounded-lg"
-            data-aos="zoom-in"
-            data-aos-duration="1400"
-          >
-            <div className="flex flex-row items-center gap-6 card-body">
-              <IoMdMail className="text-4xl w-[30px] md:w-[40px] h-[30px] md:h-[40px] text-baseApp" />
-              <div>
-                <h4 className="text-lg font-bold">Mail Adrress</h4>
-                <p>sababatik@gmail.com</p>
-              </div>
-            </div>
-          </article>
+          <span className="text-secondary font-semibold text-sm tracking-widest uppercase">
+            Hubungi Kami
+          </span>
+          <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
+            Mari <span className="text-primary">Terhubung</span>
+          </h2>
+          <p className="mt-4 text-gray-600 text-base md:text-lg">
+            Kami siap membantu Anda menemukan batik terbaik untuk kebutuhan
+            personal maupun bisnis.
+          </p>
         </div>
-        <GoogleMapsEmbed />
+
+        {/* Contact Cards */}
+        <div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-14"
+          data-aos="fade-up"
+        >
+          {CONTACT_INFO.map((item, i) => (
+            <div
+              key={i}
+              className="flex gap-4 p-5 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition"
+            >
+              <div className="w-11 h-11 flex items-center justify-center rounded-xl bg-primary-50 text-primary">
+                <item.icon className="w-5 h-5" />
+              </div>
+              <div>
+                <h4 className="font-semibold text-gray-900 text-sm mb-1">
+                  {item.title}
+                </h4>
+                {item.href ? (
+                  <a
+                    href={item.href}
+                    className="text-sm text-gray-600 hover:text-primary transition"
+                  >
+                    {item.content}
+                  </a>
+                ) : (
+                  <p className="text-sm text-gray-600">{item.content}</p>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Map + CTA */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Map */}
+          <div
+            className="lg:col-span-2 bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm"
+            data-aos="fade-right"
+          >
+            <div className="h-[380px] md:h-[460px]">
+              <GoogleMapsEmbed />
+            </div>
+          </div>
+
+          {/* CTA Panel */}
+          <div
+            className="bg-primary text-white rounded-2xl p-8 flex flex-col justify-between"
+            data-aos="fade-left"
+          >
+            <div>
+              <h3 className="text-2xl font-bold mb-3">
+                Konsultasi Batik Sekarang
+              </h3>
+              <p className="text-white/90 text-sm leading-relaxed">
+                Hubungi kami langsung melalui WhatsApp atau email untuk respon
+                lebih cepat.
+              </p>
+            </div>
+
+            <div className="mt-8 flex flex-col gap-4">
+              <a
+                href="https://wa.me/6285692807166"
+                target="_blank"
+                className="flex items-center justify-center gap-3 px-6 py-3 rounded-xl bg-white text-primary font-semibold hover:bg-gray-100 transition"
+              >
+                <FaWhatsapp className="w-5 h-5" />
+                Chat via WhatsApp
+              </a>
+
+              <a
+                href="mailto:hello@pesonabatik.id"
+                className="flex items-center justify-center gap-3 px-6 py-3 rounded-xl border border-white/40 hover:bg-white/10 transition"
+              >
+                <IoMdMail className="w-5 h-5" />
+                Kirim Email
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
-};
-
-export default Contact;
+}

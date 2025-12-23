@@ -129,7 +129,7 @@ export const products = [
     ],
     price: 170000,
     rating: 3.8,
-    gender: "Wanita",
+    gender: "Pria",
     sold: 60,
   },
   {
@@ -177,7 +177,7 @@ export const products = [
     ],
     price: 250000,
     rating: 4.9,
-    gender: "Wanita",
+    gender: "Pria",
     sold: 140,
   },
   {
@@ -193,7 +193,7 @@ export const products = [
     ],
     price: 140000,
     rating: 4.4,
-    gender: "Unisex",
+    gender: "Pria",
     sold: 100,
   },
   {
@@ -225,7 +225,7 @@ export const products = [
     ],
     price: 150000,
     rating: 4.2,
-    gender: "Wanita",
+    gender: "Unisex",
     sold: 50,
   },
   {

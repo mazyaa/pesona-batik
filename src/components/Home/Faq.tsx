@@ -8,33 +8,34 @@ interface AccordionItemProps {
   content: string;
   isOpen: boolean;
   onClick: () => void;
+  index: number;
 }
 
 const FAQDATA = [
   {
-    title: "Apa yang membuat batik kami unik dan berbeda?",
+    title: "Apa yang membuat batik Anda berbeda dari yang lain?",
     content:
-      "Batik kami dibuat dengan tangan oleh pengrajin berpengalaman, menggunakan teknik tradisional dan bahan berkualitas tinggi. Setiap motif batik memiliki filosofi dan cerita yang mendalam, yang menjadikannya lebih dari sekedar pakaian, tetapi juga karya seni.",
+      "Setiap batik kami dibuat dengan teknik tradisional oleh pengrajin berpengalaman, menggunakan bahan premium yang ramah kulit. Motif kami memiliki filosofi mendalam yang menjadikan setiap karya bukan sekadar pakaian, tetapi warisan seni yang bermakna.",
   },
   {
-    title: "Bagaimana cara memesan batik dari koleksi kami?",
+    title: "Bagaimana cara memesan batik?",
     content:
-      "Untuk memesan batik, Anda dapat memilih dari koleksi kami di situs web atau menghubungi tim kami melalui WhatsApp atau email. Kami juga menyediakan layanan custom batik sesuai dengan permintaan dan kebutuhan Anda.",
+      "Anda dapat memesan langsung melalui website kami atau menghubungi tim kami via WhatsApp. Kami juga menyediakan layanan custom design untuk kebutuhan spesial seperti seragam atau acara pernikahan.",
   },
   {
-    title: "Apakah ada layanan pengiriman untuk pembelian batik?",
+    title: "Apakah tersedia pengiriman ke seluruh Indonesia?",
     content:
-      "Ya, kami menyediakan layanan pengiriman untuk seluruh Indonesia dan beberapa negara. Setiap pesanan akan dikemas dengan hati-hati dan dikirimkan dalam waktu yang tepat, sehingga batik Anda sampai dalam kondisi terbaik.",
+      "Ya, kami melayani pengiriman ke seluruh wilayah Indonesia dengan pengemasan premium untuk menjaga kualitas batik. Kami juga melayani pengiriman internasional ke beberapa negara.",
   },
   {
-    title: "Bisakah saya membeli batik secara grosir?",
+    title: "Apakah ada opsi pembelian grosir?",
     content:
-      "Tentu saja! Kami menerima pembelian batik dalam jumlah besar dengan harga grosir. Silakan hubungi tim penjualan kami untuk informasi lebih lanjut tentang harga dan pilihan batik grosir.",
+      "Tentu! Kami menerima pesanan dalam jumlah besar dengan harga khusus untuk reseller, korporat, dan kebutuhan event. Hubungi tim sales kami untuk penawaran terbaik.",
   },
   {
-    title: "Apakah batik yang kami beli dapat dicuci dengan mesin?",
+    title: "Bagaimana cara merawat batik agar tetap awet?",
     content:
-      "Batik kami terbuat dari bahan yang dapat dicuci dengan mesin, namun kami menyarankan untuk mencucinya dengan air dingin dan menggunakan deterjen yang lembut untuk menjaga keawetan warna dan motif batik.",
+      "Cuci dengan air dingin dan deterjen lembut, hindari mesin cuci untuk hasil terbaik. Jemur di tempat teduh dan setrika dengan suhu rendah. Dengan perawatan tepat, batik Anda akan tetap indah untuk waktu yang lama.",
   },
 ];
 
@@ -43,71 +44,79 @@ const AccordionItem = ({
   content,
   isOpen,
   onClick,
+  index,
 }: AccordionItemProps) => {
   return (
     <div
-      className="mb-4 border border-gray-300 rounded-lg shadow-md"
+      className="border border-gray-200 rounded-xl overflow-hidden mb-4 last:mb-0"
       data-aos="fade-up"
+      data-aos-delay={index * 50}
     >
-      <div
-        className={`flex items-center justify-between p-4 text-xl font-medium cursor-pointer ${
-          isOpen ? "bg-blue-200 text-primary" : "bg-white text-gray-800"
+      <button
+        className={`flex items-center justify-between w-full p-5 text-left transition-all duration-300 ${
+          isOpen ? "bg-primary text-white" : "bg-white text-gray-900 hover:bg-gray-50"
         }`}
         onClick={onClick}
       >
-        <span className="text-base">{title}</span>
+        <span className="text-base font-medium pr-4">{title}</span>
         <HiChevronDown
-          className={`text-2xl transform transition-transform ${
+          className={`text-xl flex-shrink-0 transform transition-transform duration-300 ${
             isOpen ? "rotate-180" : ""
           }`}
         />
-      </div>
-      {isOpen && (
-        <div
-          className="p-4 text-gray-600 transition-all duration-300 bg-gray-50"
-          data-aos="fade-in"
-        >
-          <p>{content}</p>
+      </button>
+      <div
+        className={`overflow-hidden transition-all duration-300 ${
+          isOpen ? "max-h-96" : "max-h-0"
+        }`}
+      >
+        <div className="p-5 bg-gray-50 text-gray-600 leading-relaxed">
+          {content}
         </div>
-      )}
+      </div>
     </div>
   );
 };
 
 const Faq = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggleAccordion = (index: number): void => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <section className="md:px-16 container md:w-[70%] mx-auto my-16">
-      <h1
-        className="mb-4 text-2xl font-semibold text-center capitalize md:text-3xl"
-        data-aos="fade-up"
-      >
-        Pertanyaan yang sering diajukan{" "}
-        <span className="text-primary">(FAQ)</span>
-      </h1>
-      <p
-        className="mb-6 text-center text-base md:text-lg text-gray-700"
-        data-aos="fade-up"
-        data-aos-delay="100"
-      >
-        Kami telah merangkum jawaban atas berbagai pertanyaan yang sering
-        diajukan. Jika masih ada yang belum terjawab, silahkan hubungi WA kami!
-      </p>
-      <div className="w-full">
-        {FAQDATA.map((faq, index) => (
-          <AccordionItem
-            key={index}
-            title={faq.title}
-            content={faq.content}
-            isOpen={openIndex === index}
-            onClick={() => toggleAccordion(index)}
-          />
-        ))}
+    <section className="py-20 lg:py-28">
+      <div className="container px-6 md:px-16">
+        <div className="max-w-3xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-12" data-aos="fade-up">
+            <span className="inline-block text-secondary font-medium text-sm tracking-wider uppercase mb-4">
+              Bantuan
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+              Pertanyaan <span className="text-primary">Umum</span>
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Temukan jawaban untuk pertanyaan yang sering diajukan. Belum
+              menemukan jawaban? Hubungi tim kami!
+            </p>
+          </div>
+
+          {/* FAQ List */}
+          <div>
+            {FAQDATA.map((faq, index) => (
+              <AccordionItem
+                key={index}
+                index={index}
+                title={faq.title}
+                content={faq.content}
+                isOpen={openIndex === index}
+                onClick={() => toggleAccordion(index)}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

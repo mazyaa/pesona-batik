@@ -1,69 +1,65 @@
 import Image from "next/image";
-import Logo from "@/assets/img/logo1.png";
+import Logo from "@/assets/img/logo-tp.png";
 import Link from "next/link";
 import { AiFillHome } from "react-icons/ai";
 import { IoPeople } from "react-icons/io5";
 import { FaRegListAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
+const NAV_LINKS = [
+  { name: "Beranda", href: "/", icon: AiFillHome },
+  { name: "Koleksi", href: "/products", icon: FaRegListAlt },
+  { name: "Tentang", href: "/about", icon: IoPeople },
+  { name: "Kontak", href: "/contact", icon: MdEmail },
+];
+
 export default function Footer() {
   return (
-    <footer className="bg-gray-800 text-gray-100 py-6">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row md:justify-around md:items-center">
-          {/* Logo dan Nama Brand */}
-          <div className="flex items-center">
+    <footer className="bg-primary-900 text-primary-100">
+      <div className="container px-6 md:px-16 py-12">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+          {/* Brand */}
+          <div className="flex items-center gap-3">
             <Image
               src={Logo}
-              alt="Logo Saba Batik"
-              className="h-10 w-10 object-contain"
+              alt="Logo Pesona Batik"
+              className="h-12 w-12 object-contain"
+              width={48}
+              height={48}
             />
-            <p className="text-xl font-bold">SABABATIK</p>
+            <div>
+              <p className="text-xl font-bold tracking-wide">
+                <span className="text-secondary">PESONA</span> BATIK
+              </p>
+              <p className="text-primary-300 text-sm">Warisan Budaya Indonesia</p>
+            </div>
           </div>
 
-          {/* Navigasi */}
-          <div className="flex flex-col px-2 md:flex-row md:space-x-6 mt-4 md:mt-0">
-            <Link
-              href="/"
-              className="flex items-center gap-2 hover:underline hover:underline-offset-8"
-            >
-              <AiFillHome />
-              Beranda
-            </Link>
-            <Link
-              href="/products"
-              className="flex items-center gap-2 hover:underline hover:underline-offset-8 "
-            >
-              <FaRegListAlt />
-              Koleksi Batik
-            </Link>
-            <Link
-              href="/about"
-              className="flex items-center gap-2 hover:underline hover:underline-offset-8 "
-            >
-              <IoPeople />
-              Tentang Kami
-            </Link>
-            <Link
-              href="/contact"
-              className="flex items-center gap-2 hover:underline hover:underline-offset-8 "
-            >
-              <MdEmail />
-              Hubungi Kami
-            </Link>
-          </div>
+          {/* Navigation */}
+          <nav className="flex flex-wrap justify-center gap-6 md:gap-8">
+            {NAV_LINKS.map((link, index) => (
+              <Link
+                key={index}
+                href={link.href}
+                className="flex items-center gap-2 text-primary-200 hover:text-secondary transition-colors duration-300"
+              >
+                <link.icon className="text-sm" />
+                <span>{link.name}</span>
+              </Link>
+            ))}
+          </nav>
 
-          {/* Media Sosial */}
-          <div className="flex space-x-4 px-2 mt-4 md:mt-0">
+          {/* Social Media */}
+          <div className="flex items-center gap-4">
             <Link
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-300 hover:text-white transition"
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-primary-800 text-primary-200 hover:bg-secondary hover:text-white transition-all duration-300"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
+                className="h-5 w-5"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -74,11 +70,11 @@ export default function Footer() {
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-300 hover:text-white transition"
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-primary-800 text-primary-200 hover:bg-secondary hover:text-white transition-all duration-300"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
+                className="h-5 w-5"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -89,11 +85,11 @@ export default function Footer() {
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-300 hover:text-white transition"
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-primary-800 text-primary-200 hover:bg-secondary hover:text-white transition-all duration-300"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
+                className="h-5 w-5"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -102,10 +98,14 @@ export default function Footer() {
             </Link>
           </div>
         </div>
+      </div>
 
-        {/* Copyright */}
-        <div className="text-center mt-4 text-gray-400 text-sm">
-          © {new Date().getFullYear()} Saba Batik. All Rights Reserved.
+      {/* Copyright */}
+      <div className="border-t border-primary-800">
+        <div className="container px-6 md:px-16 py-6">
+          <p className="text-center text-primary-400 text-sm">
+            © {new Date().getFullYear()} Pesona Batik. Hak Cipta Dilindungi.
+          </p>
         </div>
       </div>
     </footer>

@@ -28,47 +28,67 @@ const renderStars = (rating: number) => {
 
 const ProductList = () => {
   return (
-    <section className="py-10 container">
-      <div className="mx-auto container px-4">
-        <h2 className="text-3xl font-bold text-center mb-8" data-aos="fade-up">
-          <span className="text-primary">Produk</span> Kami
-        </h2>
+    <section className="py-20 lg:py-28">
+      <div className="container px-6 md:px-16">
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
+          <span className="inline-block text-secondary font-medium text-sm tracking-wider uppercase mb-4">
+            Koleksi Lengkap
+          </span>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+            Semua <span className="text-primary">Produk</span> Kami
+          </h1>
+          <p className="text-gray-600 text-lg">
+            Jelajahi koleksi batik premium kami yang dibuat dengan cinta dan
+            keahlian tinggi untuk Anda.
+          </p>
+        </div>
+
+        {/* Product Grid */}
         <div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
           data-aos="fade-up"
         >
           {products.map((product, index) => (
             <Link
               key={index}
               href={`/products/${product.id}`}
-              className="transform hover:scale-105 transition-transform duration-250 ease-in-out"
+              className="block"
             >
-              <div
-                className="bg-white shadow-lg rounded-lg overflow-hidden"
+              <article
+                className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 data-aos="zoom-in"
-                data-aos-delay={index * 100}
+                data-aos-delay={index * 50}
               >
-                <Image
-                  src={product.image[0].src}
-                  alt={product.name}
-                  width={300}
-                  height={300}
-                  className="w-full h-80 object-cover object-center"
-                />
-                <div className="pb-6 px-6">
-                  <h3 className="text-lg font-semibold mb-1">{product.name}</h3>
-                  <div className="flex items-center gap-2 mb-1">
-                    {renderStars(product.rating)}
-                    <span className="text-gray-500">({product.rating})</span>
-                  </div>
-                  <p className="text-lg text-gray-500 font-bold">
-                    Rp. {product.price.toLocaleString("id-ID")}
-                  </p>
-                  <p className="text-sm text-end text-gray-500">
-                    Terjual: {product.sold} pcs
-                  </p>
+                <div className="relative overflow-hidden">
+                  <Image
+                    src={product.image[0].src}
+                    alt={product.name}
+                    width={400}
+                    height={400}
+                    className="w-full h-72 object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
-              </div>
+                <div className="p-5">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-1">
+                    {product.name}
+                  </h3>
+                  <div className="flex items-center gap-2 mb-3">
+                    {renderStars(product.rating)}
+                    <span className="text-gray-500 text-sm">
+                      ({product.rating})
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <p className="text-lg font-bold text-primary">
+                      Rp {product.price.toLocaleString("id-ID")}
+                    </p>
+                    <span className="text-sm text-gray-500">
+                      {product.sold} terjual
+                    </span>
+                  </div>
+                </div>
+              </article>
             </Link>
           ))}
         </div>

@@ -1,66 +1,103 @@
+"use client";
+
+import "swiper/css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 import React from "react";
-import HeroImg from "@/assets/img/batik.webp";
-import { FaCheckCircle } from "react-icons/fa"; // Ikon untuk item
+import Model2 from "@/assets/img/model2.png";
+import Model3 from "@/assets/img/model3.png";
+import Model4 from "@/assets/img/model4.png";
+import { FaCheckCircle } from "react-icons/fa";
 import Image from "next/image";
 
 const ITEMS = [
-  "Batik berkualitas tinggi dengan desain unik dan tradisional.",
-  "Komitmen untuk melestarikan budaya batik melalui setiap produk.",
-  "Pengrajin batik berpengalaman dengan sentuhan tangan yang ahli.",
-  "Beragam pilihan batik, dari motif klasik hingga modern.",
-  "Layanan custom batik untuk memenuhi keinginan setiap pelanggan.",
+  "Kualitas premium dengan bahan pilihan terbaik",
+  "Motif autentik karya pengrajin berpengalaman",
+  "Desain eksklusif dari klasik hingga kontemporer",
+  "Layanan custom sesuai kebutuhan Anda",
+  "Komitmen melestarikan warisan budaya Indonesia",
 ];
 
 const AboutUs = () => {
   return (
-    <section className="py-16 overflow-x-hidden bg-gray-800">
-      <div className="container flex flex-col items-center justify-between gap-16 px-6 mx-auto md:px-16 lg:flex-row">
-        {/* Hero Image */}
-        <div
-          className="relative w-full max-w-md md:w-[400px]"
-          data-aos="zoom-in"
-        >
-          <Image
-            src={HeroImg}
-            alt="About Us"
-            className="w-full h-auto rounded-lg shadow-lg"
-          />
-          <div className="absolute top-0 left-0 w-full h-full bg-blue-600 rounded-lg shadow-lg bg-opacity-20 -z-10"></div>
-        </div>
+    <section className="py-16 sm:py-20 lg:py-28 bg-primary-900 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 sm:gap-12 lg:gap-16 xl:gap-20">
+          {/* Image */}
+          <div className="w-full max-w-sm sm:max-w-md lg:max-w-none mx-auto lg:mx-0">
+            <div className="relative">
+              <div className="absolute -inset-3 sm:-inset-4 bg-secondary/20 rounded-2xl sm:rounded-3xl rotate-3"></div>
 
-        {/* Content */}
-        <div
-          className="flex flex-col gap-6 overflow-x-hidden overflow-y-hidden text-center lg:text-left lg:w-1/2"
-          data-aos="fade-up"
-        >
-          <h4
-            className="text-3xl md:text-4xl font-extrabold leading-snug text-white"
-            data-aos="fade-right"
-          >
-            Batik Pilihan <span className="text-blue-600">Terbaik</span>
-          </h4>
-          <p
-            className="leading-relaxed text-white text-base md:text-lg"
-            data-aos="fade-right"
-            data-aos-delay="200"
-          >
-            Kami adalah penyedia batik dengan desain tradisional yang kaya akan
-            filosofi, menawarkan produk berkualitas tinggi dan layanan custom
-            batik yang membuat setiap pemakai merasa istimewa.
-          </p>
-          <ul className="flex flex-col gap-4 mt-4 overflow-x-hidden overflow-y-hidden">
-            {ITEMS.map((item, index) => (
-              <li
-                key={index}
-                className="flex items-start gap-3 text-lg text-white"
-                data-aos="fade-left"
-                data-aos-delay={`${index * 150}`}
+              <Swiper
+                modules={[Autoplay]}
+                autoplay={{
+                  delay: 2000,
+                  disableOnInteraction: false,
+                }}
+                loop
+                className="relative bg-secondary/60 w-full aspect-[3/4] sm:aspect-[4/5] md:h-[420px] lg:h-[480px] rounded-xl sm:rounded-2xl -rotate-1 shadow-lg overflow-hidden"
               >
-                <FaCheckCircle className="w-6 h-6 text-blue-600" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
+                <SwiperSlide>
+                  <Image
+                    src={Model2}
+                    alt="Model Batik 1"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                  <Image
+                    src={Model3}
+                    alt="Model Batik 2"
+                    fill
+                    className="object-cover"
+                  />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                  <Image
+                    src={Model4}
+                    alt="Model Batik 3"
+                    fill
+                    className="object-cover"
+                  />
+                </SwiperSlide>
+              </Swiper>
+            </div>
+          </div>
+
+          {/* Content */}
+          <div
+            className="text-center lg:text-left"
+            data-aos="fade-left"
+            data-aos-duration="800"
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4 sm:mb-6">
+              Batik Berkualitas{" "}
+              <span className="text-secondary">Nusantara</span>
+            </h2>
+            <p className="text-primary-200 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 max-w-xl mx-auto lg:mx-0">
+              Setiap helai batik kami menyimpan filosofi mendalam dan dibuat
+              dengan ketelitian tinggi oleh tangan-tangan terampil. Kami hadir
+              untuk menghadirkan keindahan tradisi dalam sentuhan modern.
+            </p>
+
+            <ul className="space-y-3 sm:space-y-4 text-left max-w-lg mx-auto lg:mx-0">
+              {ITEMS.map((item, index) => (
+                <li
+                  key={index}
+                  className="flex items-start sm:items-center gap-3 sm:gap-4 text-primary-100"
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
+                >
+                  <FaCheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-secondary flex-shrink-0 mt-0.5 sm:mt-0" />
+                  <span className="text-sm sm:text-base lg:text-lg leading-snug">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>

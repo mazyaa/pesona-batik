@@ -18,9 +18,14 @@ const RootClient = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <NextUIProvider>
-      <Header />
-      {children}
-      <Footer />
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        {/* Main content wrapper with proper spacing for fixed navbar */}
+        <main className="flex-grow pt-16 sm:pt-[64px]">
+          {children}
+        </main>
+        <Footer />
+      </div>
     </NextUIProvider>
   );
 };

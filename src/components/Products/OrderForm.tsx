@@ -61,7 +61,7 @@ export default function OrderForm({
   ];
 
   const generateWhatsAppLink = () => {
-    const orderId = "ORD" + Math.floor(Math.random() * 1000000);
+    const orderId = "ORD" + Math.floor(Math.random() * 1000000); // random oreder ID
     const productName = encodeURIComponent(product.name);
     const productPrice = `Rp${totalPrice.toLocaleString("id-ID")}`;
     const message = `

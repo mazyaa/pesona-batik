@@ -2,3 +2,106 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    /* Primary: Deep Sogan Brown */
+    --color-primary: 107 68 35;
+    --color-primary-foreground: 255 255 255;
+    
+    /* Secondary: Warm Gold */
+    --color-secondary: 201 162 39;
+    --color-secondary-foreground: 255 255 255;
+    
+    /* Accent: Deep Maroon */
+    --color-accent: 139 38 53;
+    --color-accent-foreground: 255 255 255;
+    
+    /* Neutral tones for backgrounds */
+    --color-background: 255 255 255;
+    --color-foreground: 23 23 23;
+    
+    /* Warm neutral for cards and sections */
+    --color-muted: 247 243 239;
+    --color-muted-foreground: 107 68 35;
+  }
+  
+  body {
+    @apply bg-white text-gray-900 antialiased;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Selection color matching brand */
+  ::selection {
+    @apply bg-primary/20 text-primary-900;
+  }
+}
+
+@layer components {
+  /* Primary button style */
+  .btn-primary {
+    @apply px-6 py-3 bg-primary text-white font-semibold rounded-xl 
+           hover:bg-primary-600 active:bg-primary-700 
+           transition-all duration-300 shadow-md hover:shadow-lg 
+           hover:-translate-y-0.5 focus:outline-none focus:ring-2 
+           focus:ring-primary/50 focus:ring-offset-2;
+  }
+  
+  /* Secondary button style */
+  .btn-secondary {
+    @apply px-6 py-3 bg-secondary text-white font-semibold rounded-xl 
+           hover:bg-secondary-600 active:bg-secondary-700 
+           transition-all duration-300 shadow-md hover:shadow-lg 
+           hover:-translate-y-0.5 focus:outline-none focus:ring-2 
+           focus:ring-secondary/50 focus:ring-offset-2;
+  }
+  
+  /* Outline button style */
+  .btn-outline {
+    @apply px-6 py-3 border-2 border-primary text-primary font-semibold 
+           rounded-xl hover:bg-primary hover:text-white 
+           transition-all duration-300 focus:outline-none focus:ring-2 
+           focus:ring-primary/50 focus:ring-offset-2;
+  }
+  
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+  
+  /* Link style */
+  .link-primary {
+    @apply text-primary hover:text-primary-600 transition-colors duration-200;
+  }
+  
+  /* Section with warm background */
+  .section-warm {
+    @apply bg-primary-50;
+  }
+  
+  /* Section with dark background */
+  .section-dark {
+    @apply bg-primary-900 text-white;
+  }
+}
+
+@layer utilities {
+  /* Text gradient for headings */
+  .text-gradient-primary {
+    @apply bg-gradient-to-r from-primary to-primary-700 bg-clip-text text-transparent;
+  }
+  
+  /* Warm shadow */
+  .shadow-warm {
+    box-shadow: 0 4px 20px -2px rgba(107, 68, 35, 0.15);
+  }
+  
+  /* Gold accent shadow */
+  .shadow-gold {
+    box-shadow: 0 4px 20px -2px rgba(201, 162, 39, 0.2);
+  }
+}
+

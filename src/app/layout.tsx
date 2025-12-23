@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import RootClient from "./RootClient";
 
@@ -10,8 +11,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Saba Batik",
-  description: "Situs web resmi Saba Batik",
+  title: "Pesona Batik",
+  description: "Situs resmi penjualan batik online Pesona Batik Indonesia.",
 };
 
 export default function RootLayout({
@@ -21,8 +22,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+      </head>
       <body className={`${poppins.variable} antialiased`}>
         <RootClient>{children}</RootClient>
+
+        <Script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js" strategy="afterInteractive" />
       </body>
     </html>
   );
