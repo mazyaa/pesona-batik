@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Script from "next/script";
-import Icon from "@/assets/img/logo-tp.png";
 import "./globals.css";
 import RootClient from "./RootClient";
 
@@ -25,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
-        <link rel="icon" href={Icon.src} />
+        <link rel="icon" href="/img/logo-tp.png"/>
       </head>
       <body className={`${poppins.variable} antialiased`}>
         <RootClient>{children}</RootClient>

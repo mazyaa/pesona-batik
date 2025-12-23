@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Logo from "@/assets/img/logo-tp.png";
 import Link from "next/link";
 import { AiFillHome } from "react-icons/ai";
 import { IoPeople } from "react-icons/io5";
@@ -21,7 +20,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="flex items-center gap-3">
             <Image
-              src={Logo}
+              src="/img/logo-tp.png"
               alt="Logo Pesona Batik"
               className="h-12 w-12 object-contain"
               width={48}

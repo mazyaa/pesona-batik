@@ -10,7 +10,7 @@ const CONTACT_INFO = [
     icon: FaMapLocationDot,
     title: "Alamat",
     content:
-      "Ruko Kedoya Elok Plaza No.7-9 Blok DE, Jl. Panjang, Jakarta Barat 11520",
+      "Plakaran, Baturetno, Banguntapan, Bantul Regency, Special Region of Yogyakarta 55197",
   },
   {
     icon: IoMdCall,

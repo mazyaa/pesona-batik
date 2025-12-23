@@ -17,7 +17,6 @@ import { GiClothes } from "react-icons/gi";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import Logo from "@/assets/img/Logo-tp.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -72,7 +71,7 @@ const Header = () => {
         />
         <NavbarBrand className="grow-0">
           <Link href="/" className="inline-flex items-center gap-2" onClick={handleMenuItemClick}>
-            <Image src={Logo} alt="logo" width={44} height={36} className="w-10 h-auto sm:w-11" />
+            <Image src="/img/logo-tp.png" alt="logo" width={44} height={36} className="w-10 h-auto sm:w-11" />
             <div className="flex flex-col">
               <p className="text-lg sm:text-xl font-bold tracking-tight leading-none">
                 <span className="text-secondary">PESONA</span>{" "}
