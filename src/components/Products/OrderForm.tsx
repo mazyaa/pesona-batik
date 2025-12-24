@@ -1,3 +1,5 @@
+"use client";
+
 import { Product } from "@/types/product";
 import {
   Modal,
@@ -28,6 +30,7 @@ export default function OrderForm({
   totalPrices,
 }: OrderFormProps) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   const [quantity, setQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(totalPrices);
   const [name, setName] = useState("");
@@ -44,133 +47,156 @@ export default function OrderForm({
     setTotalPrice(totalPrices);
   }, [totalPrices]);
 
-  const input = [
-    {
-      label: "Nama",
-      placeholder: "Masukkan Nama Anda",
-    },
-    {
-      label: "Alamat",
-      placeholder: "Masukkan Alamat Anda",
-    },
-    {
-      label: "Nomor Telepon",
-      placeholder: "Masukkan Nomor Telepon Anda",
-    },
-  ];
-
   const generateWhatsAppLink = () => {
     const orderId = "ORD" + Math.floor(Math.random() * 1000000);
-    const productName = encodeURIComponent(product.name);
-    const productPrice = `Rp${totalPrice.toLocaleString("id-ID")}`;
-    const message = `
-            Halo, saya ingin memesan produk:
+    const productPrice = `Rp ${totalPrice.toLocaleString("id-ID")}`;
 
-            Nomor Pemesanan: ${orderId}
-            Nama: ${name}
-            Alamat: ${address}
-            No. HP: ${phone}
-            Nama Produk: ${productName}
-            Harga: ${productPrice}
-            Bahan: ${material}
-            Warna: ${color}
-            Ukuran: ${size}
-            Jumlah: ${quantity}
-            Apakah produk ini tersedia?
-        `;
-    const whatsappUrl = `https://api.whatsapp.com/send/?phone=6281314574274&text=${encodeURIComponent(
+    const message = `
+Halo, saya ingin memesan produk:
+
+Nomor Pemesanan: ${orderId}
+Nama: ${name}
+Alamat: ${address}
+No. HP: ${phone}
+
+Produk: ${product.name}
+Bahan: ${material}
+Warna: ${color}
+Ukuran: ${size}
+Jumlah: ${quantity}
+Harga: ${productPrice}
+
+Apakah produk ini tersedia?
+    `;
+
+    return `https://api.whatsapp.com/send/?phone=6281314574274&text=${encodeURIComponent(
       message
-    )}&type=phone_number&app_absent=0`;
-    return whatsappUrl;
+    )}`;
   };
 
   return (
-    <>
+    <div>
       <Button color="primary" onPress={onOpen}>
         Beli Sekarang
       </Button>
-      <Modal isOpen={isOpen} placement="top-center" onOpenChange={onOpenChange}>
-        <ModalContent>
+
+      <Modal
+        isOpen={isOpen}
+        placement="center"
+        onOpenChange={onOpenChange}
+        scrollBehavior="inside"
+        classNames={{
+          wrapper: "z-[99999]",
+          backdrop: "z-[99998]",
+        }}
+      >
+        <ModalContent className="max-h-[90vh] bg-white mx-4 rounded-xl">
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col">
+              <ModalHeader className="text-lg sm:text-xl font-semibold">
                 Form Pemesanan
               </ModalHeader>
-              <ModalBody>
-                {input.map((item, index) => (
-                  <Input
-                    key={index}
-                    label={item.label}
-                    value={
-                      item.label === "Nama"
-                        ? name
-                        : item.label === "Alamat"
-                        ? address
-                        : phone
-                    }
-                    onChange={(e) =>
-                      item.label === "Nama"
-                        ? setName(e.target.value)
-                        : item.label === "Alamat"
-                        ? setAddress(e.target.value)
-                        : setPhone(e.target.value)
-                    }
-                    placeholder={item.placeholder}
-                    variant="bordered"
-                    size="sm"
-                  />
-                ))}
+
+              <ModalBody className="gap-4">
                 <Input
-                  type="number"
-                  min={1}
-                  size="sm"
-                  value={quantity.toString()}
-                  onChange={(e) =>
-                    handleQuantityChange(parseInt(e.target.value, 10))
-                  }
-                  label="Jumlah Produk"
-                  placeholder="Masukkan Jumlah Produk"
+                  label="Nama Lengkap"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   variant="bordered"
+                  placeholder="Masukkan nama lengkap Anda"
+                  size="sm"
+                  isRequired
                 />
 
-                <h3 className="text-lg font-semibold">Keterangan Pesanan:</h3>
-                <ul className="list-disc flex flex-row gap-9 pl-5 items-center space-y-1">
-                  <div>
-                    <li>
-                      <span className="font-semibold">Produk:</span>{" "}
-                      {product.name}
-                    </li>
-                    <li>
-                      <span className="font-semibold">Bahan:</span> {material}
-                    </li>
-                  </div>
-                  <div>
-                    <li>
-                      <span className="font-semibold">Warna:</span> {color}
-                    </li>
-                    <li>
-                      <span className="font-semibold">Ukuran:</span> {size}
-                    </li>
-                  </div>
-                </ul>
+                {/* Alamat */}
+                <Input
+                  label="Alamat Lengkap"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  variant="bordered"
+                  placeholder="Masukkan alamat lengkap Anda"
+                  size="sm"
+                  isRequired
+                />
 
-                <h3 className="text-lg font-semibold">
-                  Harga Total: Rp{" "}
-                  {totalPrice ? totalPrice.toLocaleString("id-ID") : 0}
-                </h3>
+                {/* Telepon */}
+                <Input
+                  label="Nomor Telepon"
+                  type="tel"
+                  placeholder="Masukkan nomor telepon Anda"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  variant="bordered"
+                  size="sm"
+                  isRequired
+                />
+
+                {/* Jumlah */}
+                <Input
+                  label="Jumlah Produk"
+                  type="number"
+                  min={1}
+                  value={quantity.toString()}
+                  onChange={(e) =>
+                    handleQuantityChange(
+                      parseInt(e.target.value, 10) || 1
+                    )
+                  }
+                  variant="bordered"
+                  size="sm"
+                />
+
+                {/* Keterangan */}
+                <div className="mt-2">
+                  <h3 className="text-base font-semibold mb-2">
+                    Keterangan Pesanan
+                  </h3>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+                    <p>
+                      <span className="font-medium">Produk:</span>{" "}
+                      {product.name}
+                    </p>
+                    <p>
+                      <span className="font-medium">Bahan:</span> {material}
+                    </p>
+                    <p>
+                      <span className="font-medium">Warna:</span> {color}
+                    </p>
+                    <p>
+                      <span className="font-medium">Ukuran:</span> {size}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Total */}
+                <div className="p-3 bg-primary-50 rounded-lg">
+                  <p className="text-base sm:text-lg font-semibold text-primary">
+                    Total: Rp {totalPrice.toLocaleString("id-ID")}
+                  </p>
+                </div>
               </ModalBody>
-              <ModalFooter>
-                <Button color="danger" variant="flat" onPress={onClose}>
+
+              <ModalFooter className="gap-2">
+                <Button
+                  color="danger"
+                  variant="flat"
+                  onPress={onClose}
+                  size="sm"
+                >
                   Batal
                 </Button>
+
                 <Link href={generateWhatsAppLink()} target="_blank">
-                  <Button color="primary">Pesan Sekarang</Button>
+                  <Button color="primary" size="sm">
+                    Pesan Sekarang
+                  </Button>
                 </Link>
               </ModalFooter>
             </>
           )}
         </ModalContent>
       </Modal>
-    </>
+    </div>
   );
 }

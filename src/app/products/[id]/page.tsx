@@ -2,7 +2,7 @@
 
 /**
  * Product Detail Page
- * 
+ *
  * A clean, elegant, and responsive product detail layout
  * with modern e-commerce UI patterns and premium cultural branding.
  */
@@ -24,7 +24,12 @@ import Skirt3 from "@/assets/img/rok-cream.png";
 
 import OrderForm from "@/components/Products/OrderForm";
 import BatikOrnament from "@/components/ui/BatikOrnament";
-import { HiOutlineSparkles, HiOutlineTruck, HiOutlineShieldCheck, HiOutlineArrowLeft } from "react-icons/hi2";
+import {
+  HiOutlineSparkles,
+  HiOutlineTruck,
+  HiOutlineShieldCheck,
+  HiOutlineArrowLeft,
+} from "react-icons/hi2";
 
 // Configuration data
 const PANTS = [
@@ -132,13 +137,19 @@ const ProductItemPage = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Breadcrumb */}
       <div className="bg-white border-b border-gray-100">
-        <div className="container px-6 md:px-16 py-4">
-          <nav className="flex items-center gap-2 text-sm">
-            <Link href="/" className="text-gray-500 hover:text-primary transition-colors">
+        <div className="container px-6 md:px-16 py-4 pt-10">
+          <nav className="flex items-center gap-2 text-xs sm:text-sm">
+            <Link
+              href="/"
+              className="text-gray-500 hover:text-primary transition-colors"
+            >
               Beranda
             </Link>
             <span className="text-gray-300">/</span>
-            <Link href="/products" className="text-gray-500 hover:text-primary transition-colors">
+            <Link
+              href="/products"
+              className="text-gray-500 hover:text-primary transition-colors"
+            >
               Koleksi
             </Link>
             <span className="text-gray-300">/</span>
@@ -148,13 +159,12 @@ const ProductItemPage = () => {
       </div>
 
       {/* Main Content */}
-      <div className="container px-6 md:px-16 py-8 lg:py-12">
+      <div className="container md:px-16 py-8 lg:py-12">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
           {/* Left Column - Product Images */}
           <div className="relative">
             {/* Batik Ornament */}
-            <BatikOrnament position="top-left" opacity={0.03} size="lg" />
-            
+
             {/* Main Image */}
             <div className="relative bg-white rounded-2xl shadow-sm overflow-hidden">
               <div className="aspect-square relative">
@@ -168,7 +178,8 @@ const ProductItemPage = () => {
               </div>
 
               {/* Bottom wear overlay (pants/skirt) */}
-              {(product.gender === "Pria" || (product.gender === "Unisex" && bottomType === "pants")) && (
+              {(product.gender === "Pria" ||
+                (product.gender === "Unisex" && bottomType === "pants")) && (
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 pointer-events-none">
                   <Image
                     src={selectedPants.src}
@@ -179,7 +190,8 @@ const ProductItemPage = () => {
                   />
                 </div>
               )}
-              {(product.gender === "Wanita" || (product.gender === "Unisex" && bottomType === "skirt")) && (
+              {(product.gender === "Wanita" ||
+                (product.gender === "Unisex" && bottomType === "skirt")) && (
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4/5 pointer-events-none">
                   <Image
                     src={selectedSkirt.src}
@@ -201,26 +213,28 @@ const ProductItemPage = () => {
             </div>
 
             {/* Color Thumbnail Gallery */}
-            <div className="mt-4 flex gap-3 overflow-x-auto pb-2">
-              {product.image.map((img, index) => (
-                <button
-                  key={index}
-                  onClick={() => setSelectedColor(img.color)}
-                  className={`flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden border-2 transition-all ${
-                    selectedColor === img.color
-                      ? "border-primary shadow-md"
-                      : "border-gray-200 hover:border-gray-300"
-                  }`}
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.color}
-                    width={80}
-                    height={80}
-                    className="w-full h-full object-cover"
-                  />
-                </button>
-              ))}
+            <div className="flex flex-col justify-center">
+              <div className="mt-4 inline-grid grid-cols-3 sm:grid-cols-6 gap-3 overflow-x-auto pb-2">
+                {product.image.map((img, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setSelectedColor(img.color)}
+                    className={`flex-shrink-0 w-20 h-20  rounded-xl overflow-hidden border-2 transition-all ${
+                      selectedColor === img.color
+                        ? "border-primary shadow-md"
+                        : "border-gray-200 hover:border-gray-300"
+                    }`}
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.color}
+                      width={80}
+                      height={80}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -362,7 +376,9 @@ const ProductItemPage = () => {
               {/* Bottom Type Selection (for Unisex) */}
               {product.gender === "Unisex" && (
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-3">Jenis Bawahan</h3>
+                  <h3 className="font-semibold text-gray-900 mb-3">
+                    Jenis Bawahan
+                  </h3>
                   <div className="flex flex-wrap gap-2">
                     <SelectionButton
                       selected={bottomType === "pants"}
@@ -383,24 +399,36 @@ const ProductItemPage = () => {
               {/* Bottom Color Selection */}
               <div>
                 <h3 className="font-semibold text-gray-900 mb-3">
-                  Warna {product.gender === "Pria" || (product.gender === "Unisex" && bottomType === "pants") ? "Celana" : "Rok"}:{" "}
+                  Warna{" "}
+                  {product.gender === "Pria" ||
+                  (product.gender === "Unisex" && bottomType === "pants")
+                    ? "Celana"
+                    : "Rok"}
+                  :{" "}
                   <span className="font-normal text-primary">
-                    {product.gender === "Pria" || (product.gender === "Unisex" && bottomType === "pants")
+                    {product.gender === "Pria" ||
+                    (product.gender === "Unisex" && bottomType === "pants")
                       ? selectedPants.color
                       : selectedSkirt.color}
                   </span>
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {(product.gender === "Pria" || (product.gender === "Unisex" && bottomType === "pants") ? PANTS : SKIRT).map((item) => (
+                  {(product.gender === "Pria" ||
+                  (product.gender === "Unisex" && bottomType === "pants")
+                    ? PANTS
+                    : SKIRT
+                  ).map((item) => (
                     <SelectionButton
                       key={item.color}
                       selected={
-                        product.gender === "Pria" || (product.gender === "Unisex" && bottomType === "pants")
+                        product.gender === "Pria" ||
+                        (product.gender === "Unisex" && bottomType === "pants")
                           ? selectedPants.color === item.color
                           : selectedSkirt.color === item.color
                       }
                       onClick={() =>
-                        product.gender === "Pria" || (product.gender === "Unisex" && bottomType === "pants")
+                        product.gender === "Pria" ||
+                        (product.gender === "Unisex" && bottomType === "pants")
                           ? setSelectedPants(item)
                           : setSelectedSkirt(item)
                       }
@@ -485,7 +513,7 @@ const ProductItemPage = () => {
           <div className="bg-white rounded-2xl shadow-sm overflow-hidden relative">
             {/* Subtle ornament */}
             <BatikOrnament position="bottom-right" opacity={0.02} size="xl" />
-            
+
             <div className="p-6 lg:p-10">
               <h2 className="text-xl lg:text-2xl font-bold text-gray-900 mb-6">
                 Tentang Produk Ini
@@ -569,7 +597,9 @@ const ProductItemPage = () => {
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-primary mt-1">✓</span>
-                      <span>Gunakan sabun khusus batik untuk hasil terbaik</span>
+                      <span>
+                        Gunakan sabun khusus batik untuk hasil terbaik
+                      </span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-primary mt-1">✓</span>

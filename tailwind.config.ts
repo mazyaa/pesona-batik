@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import { heroui } from "@heroui/react";
+import { heroui } from "@heroui/theme";
 
 export default {
   content: [
@@ -77,6 +77,6 @@ export default {
           },
         },
       },
-    }) as ReturnType<typeof heroui> & { handler: unknown },
+    }),
   ],
-} as Config;
+} satisfies Config;
