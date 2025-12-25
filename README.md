@@ -1,14 +1,26 @@
-# Pesona Batik Indonesia
+# 🌺 Pesona Batik Indonesia
 
-This project is a modern website built with **Next.js (App Router)**, designed to showcase and promote **Pesona Batik Indonesia** with a clean, responsive, and user-friendly interface.
+**Pesona Batik Indonesia** is a modern web application built with **Next.js (App Router)**, designed to showcase and promote the richness of Indonesian batik culture through a clean, responsive, and user-friendly interface.
+
+This project emphasizes performance, modern UI, and scalability while preserving cultural identity.
 
 ---
 
 ## 🚀 Getting Started
 
-First, install dependencies and run the development server:
+Follow the steps below to run the project locally.
 
+### 1. Install Dependencies
 ```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+
+2. Run the Development Server
 npm run dev
 # or
 yarn dev
@@ -17,11 +29,13 @@ pnpm dev
 # or
 bun dev
 
-Then open your browser and visit:
+3. Open in Browser
+
+Open your browser and visit:
 
 👉 http://localhost:3000
 
-The app will automatically reload when you make changes to the code.
+The application will automatically reload when you make changes to the code.
 
 🛠 Development
 
@@ -30,42 +44,49 @@ You can start editing the main page by modifying:
 app/page.tsx
 
 
-This project uses the Next.js App Router and supports modern React features such as Server Components and Client Components.
+This project uses Next.js App Router, supporting modern React features such as:
+
+Server Components
+
+Client Components
+
+Optimized layouts and routing
 
 🎨 Fonts & Styling
 
-This project uses next/font
- for optimized font loading, ensuring better performance and typography across devices.
+Font Optimization
+Implemented using next/font for optimized loading and consistent typography.
 
-Styling is handled using Tailwind CSS for rapid UI development and responsive design.
+Styling
+Styled with Tailwind CSS for rapid development, responsive layouts, and clean UI design.
 
 📚 Learn More
 
-To learn more about Next.js, check out these resources:
+Helpful resources to learn more about the technologies used in this project:
 
 📘 Next.js Documentation
- – Learn about Next.js features and API
+https://nextjs.org/docs
 
 🎓 Learn Next.js
- – Interactive Next.js tutorial
+https://nextjs.org/learn
 
 💻 Next.js GitHub Repository
+https://github.com/vercel/next.js
 
 🌍 Deployment
 
-The easiest way to deploy this project is using Vercel, the platform built by the creators of Next.js.
+This project is deployed using Vercel, the official platform from the creators of Next.js.
 
-👉 Deploy instantly via:
-https://vercel.com/new
+🔗 Live Demo
 
-For more details, read the official deployment guide:
-Next.js Deployment Documentation
+👉 https://pesona-batik-drdd.vercel.app/
+
+For deployment details, refer to the official documentation:
+https://nextjs.org/docs/app/building-your-application/deploying
 
 🙏 Credits
 
-This project is inspired by and references the following open-source project:
+This project is inspired by the following open-source project:
 
 Source & Inspiration:
 https://github.com/Azzaxy1/saba-batik
-
-Special thanks to the original creator for the inspiration and ideas used in this project.
