@@ -11,7 +11,7 @@ const Description = () => {
             Tentang Kami
           </span>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            Melestarikan Warisan,{" "}
+            Melestarikan Warisan{" "}
             <span className="text-primary">Menginspirasi Generasi</span>
           </h1>
           <p className="text-gray-600 text-lg leading-relaxed">

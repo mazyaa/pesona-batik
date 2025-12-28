@@ -17,7 +17,7 @@ const Products = () => {
             Koleksi Terbaik
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            Pilihan <span className="text-primary">Unggulan</span> Kami
+            Pilihan Unggulan Kami
           </h2>
           <p className="text-gray-600 text-lg">
             Temukan koleksi batik pilihan yang didesain dengan cinta dan dibuat

@@ -39,7 +39,7 @@ const Header = () => {
     } else {
       document.body.style.overflow = "unset";
     }
-    return () => {
+    return () => { // use cleanup to reset overflow on unmount
       document.body.style.overflow = "unset";
     };
   }, [isMenuOpen]);
@@ -68,7 +68,7 @@ const Header = () => {
         menuItem: "py-3",
       }}
     >
-      {/* Logo dan Menu Toggle */}
+      {/* Logo and Menu Toggle */}
       <NavbarContent className="gap-2" justify="start">
         <button
           type="button"
@@ -83,7 +83,7 @@ const Header = () => {
           )}
         </button>
         <NavbarBrand className="grow-0">
-          <Link
+          <Link 
             href="/"
             className="inline-flex items-center gap-2"
             onClick={handleMenuItemClick}

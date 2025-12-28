@@ -268,12 +268,15 @@ const ProductItemPage = () => {
                 <span className="text-3xl lg:text-4xl font-bold text-primary">
                   Rp {totalPrice.toLocaleString("id-ID")}
                 </span>
+
+                {/* line througt */}
                 {selectedMaterial.price > 0 && (
                   <span className="text-sm text-gray-500 line-through">
                     Rp {product.price.toLocaleString("id-ID")}
                   </span>
                 )}
               </div>
+              
               {selectedMaterial.price > 0 && (
                 <p className="text-sm text-gray-600 mt-1">
                   Termasuk upgrade bahan {selectedMaterial.name}

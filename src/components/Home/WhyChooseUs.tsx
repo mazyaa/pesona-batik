@@ -35,7 +35,7 @@ const WhyChooseUs = () => {
             Keunggulan Kami
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Mengapa Memilih Kami?
+            Mengapa Memilih Batik Kami?
           </h2>
           <p className="text-primary-300 text-lg">
             Kami berkomitmen memberikan yang terbaik untuk setiap pelanggan
